@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
     });
 
     // Return the audio data as an MP3 response
-    return new NextResponse(audio.audioData, {
+    return new NextResponse(audio.audio.format, {
       headers: {
         'Content-Type': 'audio/mpeg',
         'Content-Disposition': 'inline; filename="speech.mp3"',

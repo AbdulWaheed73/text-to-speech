@@ -4,11 +4,8 @@ import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [text1, setText1] = useState('');
-  const [text2, setText2] = useState('');
   const [isLoading1, setIsLoading1] = useState(false);
-  const [isLoading2, setIsLoading2] = useState(false);
   const [error1, setError1] = useState('');
-  const [error2, setError2] = useState('');
   const [browserSupport, setBrowserSupport] = useState(true);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [selectedVoice, setSelectedVoice] = useState<string>('');
@@ -167,49 +164,6 @@ export default function Home() {
     }
   };
 
-  // OpenAI TTS Handler (Requires API key & credits)
-  const handleOpenAISubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError2('');
-
-    if (!text2.trim()) {
-      setError2('Please enter some text');
-      return;
-    }
-
-    setIsLoading2(true);
-
-    try {
-      const response = await fetch('/api/tts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text: text2 }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => null);
-        throw new Error(errorData?.error || 'Failed to generate speech');
-      }
-
-      const audioBlob = await response.blob();
-      const audioUrl = URL.createObjectURL(audioBlob);
-
-      const audio = new Audio(audioUrl);
-      audio.play();
-
-      audio.onended = () => {
-        URL.revokeObjectURL(audioUrl);
-      };
-
-    } catch (err) {
-      setError2(err instanceof Error ? err.message : 'Failed to generate speech');
-      console.error('Error:', err);
-    } finally {
-      setIsLoading2(false);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4 py-8">
@@ -357,7 +311,7 @@ export default function Home() {
 
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            💡 Start with Web Speech API (left) - it's completely free! OpenAI TTS (right) requires an API key with credits.
+            💡 Start with Web Speech API (left) - it&apos;s completely free! OpenAI TTS (right) requires an API key with credits.
           </p>
         </div>
 
