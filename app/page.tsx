@@ -5,10 +5,13 @@ import { useState, useEffect } from 'react';
 export default function Home() {
   const [text1, setText1] = useState('');
   const [text2, setText2] = useState('');
+  const [text3, setText3] = useState('');
   const [isLoading1, setIsLoading1] = useState(false);
   const [isLoading2, setIsLoading2] = useState(false);
+  const [isLoading3, setIsLoading3] = useState(false);
   const [error1, setError1] = useState('');
   const [error2, setError2] = useState('');
+  const [error3, setError3] = useState('');
   const [browserSupport, setBrowserSupport] = useState(true);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [selectedVoice, setSelectedVoice] = useState<string>('');
@@ -240,6 +243,79 @@ export default function Home() {
     }
   };
 
+  // Agora TTS Handler (Requires Agora credentials)
+  const handleAgoraSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError3('');
+
+    if (!text3.trim()) {
+      setError3('Please enter some text');
+      return;
+    }
+
+    setIsLoading3(true);
+
+    try {
+      const response = await fetch('/api/agora-tts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: text3 }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.error || 'Failed to generate speech');
+      }
+
+      const audioBlob = await response.blob();
+      console.log('Agora audio blob received:', audioBlob.size, 'bytes, type:', audioBlob.type);
+
+      const audioUrl = URL.createObjectURL(audioBlob);
+      console.log('Agora audio URL created:', audioUrl);
+
+      const audio = new Audio(audioUrl);
+
+      // Add event listeners for debugging
+      audio.onloadeddata = () => {
+        console.log('Agora audio data loaded successfully');
+      };
+
+      audio.onerror = (e) => {
+        console.error('Agora audio playback error:', e);
+        setError3('Failed to play audio. Check console for details.');
+        URL.revokeObjectURL(audioUrl);
+      };
+
+      audio.onended = () => {
+        console.log('Agora audio playback ended');
+        URL.revokeObjectURL(audioUrl);
+      };
+
+      audio.onplay = () => {
+        console.log('Agora audio started playing');
+      };
+
+      // Load and play the audio
+      try {
+        audio.load();
+        console.log('Attempting to play Agora audio...');
+        await audio.play();
+        console.log('Agora audio.play() promise resolved');
+      } catch (playError) {
+        console.error('Agora play error:', playError);
+        setError3(`Playback failed: ${playError instanceof Error ? playError.message : 'Unknown error'}`);
+      }
+
+    } catch (err) {
+      setError3(err instanceof Error ? err.message : 'Failed to generate speech');
+      console.error('Agora error:', err);
+    } finally {
+      setIsLoading3(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4 py-8">
       <div className="max-w-6xl mx-auto">
@@ -247,10 +323,10 @@ export default function Home() {
           Text to Speech Comparison
         </h1>
         <p className="text-center text-gray-600 dark:text-gray-400 mb-12 text-lg">
-          Compare two different text-to-speech engines side by side
+          Compare three different text-to-speech engines
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Web Speech API Card */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
             <div className="flex items-center justify-between mb-4">
@@ -452,11 +528,14 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Agora TTS Card */}
+
+
         </div>
 
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            💡 Start with Web Speech API (left) - it&apos;s completely free! OpenAI TTS (right) requires an API key with credits.
+            💡 Start with Web Speech API - it&apos;s completely free! OpenAI TTS and Agora TTS require API credentials.
           </p>
         </div>
 
