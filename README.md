@@ -1,10 +1,10 @@
 # Text to Speech Comparison App
 
-A Next.js application that lets you compare three different text-to-speech engines: **Web Speech API** (free, browser-based), **OpenAI TTS** (premium, AI-powered), and **Agora TTS** (cloud-based, real-time).
+A Next.js application that lets you compare three different text-to-speech engines: **Web Speech API** (free, browser-based), **OpenAI TTS** (premium, AI-powered), and **Agora TTS** (Azure-powered, enterprise-grade).
 
 ## Features
 
-- **Triple TTS Engines**: Compare Web Speech API vs OpenAI TTS vs Agora TTS
+- **Triple TTS Engines**: Compare Web Speech API vs OpenAI TTS vs Agora TTS (Azure)
 - **Web Speech API (Free)**:
   - No API key required
   - Works offline
@@ -16,11 +16,11 @@ A Next.js application that lets you compare three different text-to-speech engin
   - Natural-sounding speech
   - Multiple voice options
   - Powered by Vercel AI SDK
-- **ElevenLabs TTS (Cloud)** *(Agora-compatible)*:
-  - High-quality AI voices
-  - Real-time processing
-  - Natural-sounding speech
-  - Same provider used by Agora's platform
+- **Agora TTS (Cloud)** *(Azure-powered)*:
+  - Enterprise-grade reliability
+  - Uses Azure Cognitive Services TTS
+  - Same TTS provider used by Agora's Conversational AI platform
+  - Neural voice models
 - Responsive 3-column comparison layout
 - Dark mode support
 - Clean, modern UI
@@ -30,7 +30,7 @@ A Next.js application that lets you compare three different text-to-speech engin
 - Node.js 18+ installed
 - A modern web browser (Chrome, Firefox, Safari, Edge) for Web Speech API
 - An OpenAI API key (optional, only needed for OpenAI TTS - get one at https://platform.openai.com/api-keys)
-- An ElevenLabs API key (optional, only needed for third TTS engine - get one at https://elevenlabs.io)
+- Azure Speech Services key (optional, only needed for Agora TTS - get one at https://portal.azure.com)
 
 ## Setup Instructions
 
@@ -52,10 +52,11 @@ A Next.js application that lets you compare three different text-to-speech engin
    - Open `.env.local` and add your credentials:
      ```
      OPENAI_API_KEY=your_actual_openai_api_key_here
-     AGORA_APP_ID=your_agora_app_id_here
-     AGORA_TOKEN=your_agora_token_here
+     AZURE_TTS_KEY=your_azure_speech_key_here
+     AZURE_TTS_REGION=eastus
      ```
    - **Note**: You can skip this step and use only the free Web Speech API (first card)
+   - **For Azure**: Create a Speech Services resource at https://portal.azure.com and get your key
 
 4. **Run the development server:**
    ```bash
@@ -83,11 +84,11 @@ A Next.js application that lets you compare three different text-to-speech engin
 5. Note: Requires OpenAI credits
 
 ### Agora TTS (Third Card - CLOUD)
-1. Make sure you have set up your Agora credentials in `.env.local`
+1. Make sure you have set up your Azure Speech Services key in `.env.local`
 2. Enter any text in the textarea
 3. Click "Play with Agora TTS"
-4. Cloud-generated speech will be processed and played
-5. Note: Requires Agora account and credentials
+4. Azure-powered speech (same as used by Agora platform) will be generated and played
+5. Note: Uses Azure TTS, which is one of Agora's supported TTS providers
 
 ## Tech Stack
 
@@ -96,7 +97,7 @@ A Next.js application that lets you compare three different text-to-speech engin
 - **TTS Engines:**
   - Web Speech API (browser built-in)
   - OpenAI TTS-1 via Vercel AI SDK
-  - Agora TTS API
+  - Agora TTS (Azure Cognitive Services)
 - **Language:** TypeScript
 
 ## Project Structure
@@ -156,12 +157,13 @@ Response: Audio file (MP3 format)
 - Make sure to keep your API key secure and never commit it to version control
 - Requires active OpenAI account with credits
 
-### Agora TTS
-- Real-time cloud-based text-to-speech processing
-- Enterprise-grade infrastructure with scalability
-- Uses Agora's REST API for TTS generation
-- Requires Agora App ID and access token
-- Voice and language can be customized in the API route
+### Agora TTS (Azure-powered)
+- Uses Azure Cognitive Services TTS (same as Agora's Conversational AI platform)
+- Enterprise-grade infrastructure with Microsoft's neural voices
+- Agora's platform supports Azure, ElevenLabs, Cartesia, OpenAI, and Hume AI
+- We're using Azure TTS directly which is one of Agora's supported providers
+- Configurable voices and languages via SSML
+- Requires Azure Speech Services subscription key
 - Keep your credentials secure and never commit them to version control
 
 ## Deploy on Vercel
@@ -170,8 +172,8 @@ Response: Audio file (MP3 format)
 2. Import the project on [Vercel](https://vercel.com/new)
 3. Add your environment variables in the Vercel dashboard:
    - `OPENAI_API_KEY` (for OpenAI TTS)
-   - `AGORA_APP_ID` (for Agora TTS)
-   - `AGORA_TOKEN` (for Agora TTS)
+   - `AZURE_TTS_KEY` (for Agora TTS)
+   - `AZURE_TTS_REGION` (for Agora TTS, e.g., "eastus")
 4. Deploy!
 
 ## Learn More
@@ -180,7 +182,8 @@ Response: Audio file (MP3 format)
 - [Vercel AI SDK Documentation](https://sdk.vercel.ai/docs)
 - [OpenAI TTS API](https://platform.openai.com/docs/guides/text-to-speech)
 - [Agora Documentation](https://docs.agora.io/)
-- [Agora REST API](https://docs.agora.io/en/voice-calling/reference/rest-api)
+- [Agora Conversational AI TTS](https://docs.agora.io/en/conversational-ai/models/tts/overview)
+- [Azure Speech Services](https://azure.microsoft.com/en-us/services/cognitive-services/speech-services/)
 - [Next.js Documentation](https://nextjs.org/docs)
 
 ## FAQ
@@ -189,13 +192,13 @@ Response: Audio file (MP3 format)
 A: Yes! The Web Speech API (first card) works completely free without any API key.
 
 **Q: Why use OpenAI TTS or Agora TTS if Web Speech API is free?**
-A: OpenAI TTS provides more natural-sounding, consistent voices across all platforms. Agora TTS offers enterprise-grade reliability and scalability. Web Speech API quality varies by browser/OS.
+A: OpenAI TTS provides more natural-sounding, consistent voices across all platforms. Agora TTS (Azure-powered) offers enterprise-grade reliability with Microsoft's neural voices. Web Speech API quality varies by browser/OS.
 
 **Q: What's the difference between OpenAI TTS and Agora TTS?**
-A: OpenAI TTS focuses on high-quality, natural-sounding AI voices. Agora TTS is part of a real-time communication platform, designed for scalability and enterprise applications.
+A: OpenAI TTS uses OpenAI's TTS models. Agora TTS uses Azure Cognitive Services, which is one of the official TTS providers supported by Agora's Conversational AI platform (alongside ElevenLabs, Cartesia, OpenAI, and Hume AI).
 
-**Q: How do I get Agora credentials?**
-A: Sign up at https://console.agora.io/, create a project, and get your App ID and generate an access token.
+**Q: How do I get Azure credentials for Agora TTS?**
+A: Sign up at https://portal.azure.com, create a "Speech Services" resource, and copy your subscription key and region. This is the same TTS engine used by Agora's platform.
 
 **Q: What about WhisperSpeech or other TTS options?**
 A: WhisperSpeech is an open-source TTS but requires GPU and self-hosting. This app focuses on easy-to-use options.

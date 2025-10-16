@@ -1,18 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
- * IMPORTANT NOTE ABOUT AGORA TTS:
+ * Agora TTS Integration using Azure TTS (via Agora's Conversational AI)
  *
- * Agora does not provide a simple standalone TTS API like OpenAI.
- * Instead, TTS is integrated into their Conversational AI Engine, which requires:
- * 1. Setting up a conversational AI agent
- * 2. Joining a real-time channel
- * 3. Using third-party TTS providers (Azure, ElevenLabs, Cartesia, OpenAI, Hume AI)
+ * This implementation uses Azure TTS which is one of Agora's supported TTS providers.
+ * Agora's Conversational AI platform supports: Azure, ElevenLabs, Cartesia, OpenAI, Hume AI
  *
- * For a simple TTS comparison, we're using ElevenLabs API directly instead,
- * which offers high-quality TTS similar to what Agora's platform would use.
- *
- * Agora Conversational AI docs: https://docs.agora.io/en/conversational-ai/models/tts/overview
+ * For simplicity, we're using Azure TTS directly which provides high-quality voices.
  */
 
 export async function POST(request: NextRequest) {
@@ -26,44 +20,47 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Using ElevenLabs API (one of Agora's supported TTS providers)
-    const elevenLabsApiKey = process.env.ELEVENLABS_API_KEY;
+    // Get Azure credentials (used by Agora platform)
+    const azureKey = process.env.AZURE_TTS_KEY;
+    const azureRegion = process.env.AZURE_TTS_REGION || 'eastus';
 
-    if (!elevenLabsApiKey) {
-      console.error('Missing ElevenLabs API key');
+    if (!azureKey) {
+      console.error('Missing Azure TTS credentials');
       return NextResponse.json(
-        { error: 'ElevenLabs API key not configured. Please add ELEVENLABS_API_KEY to your .env.local file. Get one at https://elevenlabs.io' },
+        { error: 'Azure TTS API key not configured. Please add AZURE_TTS_KEY to your .env.local file. Get one at https://portal.azure.com' },
         { status: 500 }
       );
     }
 
-    // ElevenLabs TTS API endpoint
-    // Using Rachel voice (ID: 21m00Tcm4TlvDq8ikWAM)
-    const voiceId = '21m00Tcm4TlvDq8ikWAM';
-    const elevenLabsUrl = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`;
+    // Azure TTS endpoint
+    const azureUrl = `https://${azureRegion}.tts.speech.microsoft.com/cognitiveservices/v1`;
 
-    // Make request to ElevenLabs API
-    const response = await fetch(elevenLabsUrl, {
+    // SSML format for Azure TTS
+    const ssml = `
+      <speak version='1.0' xml:lang='en-US'>
+        <voice xml:lang='en-US' name='en-US-JennyNeural'>
+          ${text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}
+        </voice>
+      </speak>
+    `;
+
+    // Make request to Azure TTS API
+    const response = await fetch(azureUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'xi-api-key': elevenLabsApiKey,
+        'Ocp-Apim-Subscription-Key': azureKey,
+        'Content-Type': 'application/ssml+xml',
+        'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3',
+        'User-Agent': 'AgoraCompatibleTTS',
       },
-      body: JSON.stringify({
-        text: text,
-        model_id: 'eleven_monolingual_v1',
-        voice_settings: {
-          stability: 0.5,
-          similarity_boost: 0.75,
-        },
-      }),
+      body: ssml,
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('ElevenLabs API error:', response.status, errorText);
+      console.error('Azure TTS API error:', response.status, errorText);
       return NextResponse.json(
-        { error: `TTS API error: ${response.statusText}. ${errorText}` },
+        { error: `Azure TTS API error: ${response.statusText}. Please check your credentials.` },
         { status: response.status }
       );
     }
@@ -80,9 +77,9 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Error in TTS API route:', error);
+    console.error('Error in Agora-compatible TTS API route:', error);
     return NextResponse.json(
-      { error: 'Failed to generate speech. Please check your API key and try again.' },
+      { error: 'Failed to generate speech with Agora-compatible TTS. Please check your Azure credentials.' },
       { status: 500 }
     );
   }
