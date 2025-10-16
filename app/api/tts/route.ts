@@ -13,17 +13,24 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const audio = await generateSpeech({
+    const result = await generateSpeech({
       model: openai.speech('tts-1'),
       text: text,
       voice: 'alloy',
     });
 
+    console.log('Audio generated successfully');
+    console.log('Audio uint8Array length:', result.audio.uint8Array.length);
+
+    // Get the audio as Uint8Array and convert to Buffer
+    const audioBuffer = Buffer.from(result.audio.uint8Array);
+    console.log('Audio buffer size:', audioBuffer.length, 'bytes');
+
     // Return the audio data as an MP3 response
-    return new NextResponse(audio.audio.format, {
+    return new NextResponse(audioBuffer, {
       headers: {
         'Content-Type': 'audio/mpeg',
-        'Content-Disposition': 'inline; filename="speech.mp3"',
+        'Content-Length': audioBuffer.length.toString(),
       },
     });
   } catch (error) {
