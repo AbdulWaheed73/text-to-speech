@@ -2,19 +2,23 @@
   "name": "text-to-speech-app",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate-images": "node scripts/generate-images.js"
   },
   "dependencies": {
     "@ai-sdk/openai": "^2.0.52",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.3",
+    "@supabase/supabase-js": "^2.75.1",
     "ai": "^5.0.72",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
     "lucide-react": "^0.546.0",
     "next": "15.5.5",
     "openai": "^6.4.0",

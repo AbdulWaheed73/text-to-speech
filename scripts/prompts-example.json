@@ -1,0 +1,131 @@
+{
+  "batch_1": [
+    { "keyword": "I want", "prompt": "Create an emoji of a smiling child raising one hand happily, representing the phrase 'I want' in a kind and clear way." },
+    { "keyword": "water", "prompt": "Create a cute emoji of a glass of water with a happy face, simple and bright for children." },
+    { "keyword": "food", "prompt": "Create an emoji of a smiling plate with food, showing mealtime for kids." },
+    { "keyword": "happy", "prompt": "Create an emoji of a smiling child’s face showing joy and happiness." },
+    { "keyword": "sad", "prompt": "Create an emoji of a child’s face with a small tear, showing sadness softly." },
+    { "keyword": "angry", "prompt": "Create an emoji of a child’s face with puffed cheeks and eyebrows down, showing mild anger." },
+    { "keyword": "help", "prompt": "Create an emoji of a raised hand with a friendly face, showing asking for help." },
+    { "keyword": "play", "prompt": "Create an emoji of a colorful ball or toy with a happy face, showing playtime." },
+    { "keyword": "home", "prompt": "Create an emoji of a small colorful house with a smiling face, showing home." },
+    { "keyword": "school", "prompt": "Create an emoji of a cheerful school building with smiling windows, showing school." }
+  ],
+
+  "batch_2": [
+    { "keyword": "I need", "prompt": "Create an emoji of a child reaching forward politely, showing the phrase 'I need' clearly." },
+    { "keyword": "toilet", "prompt": "Create an emoji of a friendly toilet sign with a smiling face, simple and easy for kids to understand." },
+    { "keyword": "bath", "prompt": "Create an emoji of a bathtub with bubbles and a smiling rubber duck, showing bath time." },
+    { "keyword": "sleep", "prompt": "Create an emoji of a sleeping child with a pillow and small 'Zzz', showing sleep time." },
+    { "keyword": "tired", "prompt": "Create an emoji of a sleepy child yawning softly, showing tiredness." },
+    { "keyword": "hungry", "prompt": "Create an emoji of a child rubbing their tummy with a happy face, showing hunger." },
+    { "keyword": "thirsty", "prompt": "Create an emoji of a child holding a cup of water with a smile, showing thirst." },
+    { "keyword": "outside", "prompt": "Create an emoji of a smiling sun and a child waving outdoors, showing going outside." },
+    { "keyword": "inside", "prompt": "Create an emoji of a happy child sitting inside a room, showing being inside." },
+    { "keyword": "toys", "prompt": "Create an emoji of a teddy bear with a smiling face, representing toys." }
+  ],
+
+  "batch_3": [
+    { "keyword": "I like", "prompt": "Create an emoji of a smiling heart with thumbs-up, showing the phrase 'I like' clearly." },
+    { "keyword": "music", "prompt": "Create an emoji of a happy musical note dancing, showing music time." },
+    { "keyword": "dance", "prompt": "Create an emoji of a smiling child dancing with colorful motion lines." },
+    { "keyword": "draw", "prompt": "Create an emoji of a crayon with a happy face drawing a line, showing drawing." },
+    { "keyword": "read", "prompt": "Create an emoji of an open book with a smiling face, showing reading." },
+    { "keyword": "paint", "prompt": "Create an emoji of a paintbrush with smiling colors, showing painting." },
+    { "keyword": "color", "prompt": "Create an emoji of crayons with happy faces, showing coloring." },
+    { "keyword": "toy", "prompt": "Create an emoji of a ball with eyes and a smile, representing toys." },
+    { "keyword": "friend", "prompt": "Create an emoji of two smiling children holding hands, showing friendship." },
+    { "keyword": "family", "prompt": "Create an emoji of smiling family members standing together, showing family." }
+  ],
+
+  "batch_4": [
+    { "keyword": "yes", "prompt": "Create an emoji of a smiling face with a green check mark, showing yes." },
+    { "keyword": "no", "prompt": "Create an emoji of a friendly face with a red cross mark, showing no." },
+    { "keyword": "stop", "prompt": "Create an emoji of a smiling hand raised up, showing stop." },
+    { "keyword": "go", "prompt": "Create an emoji of a green arrow with a smiling face, showing go." },
+    { "keyword": "sit", "prompt": "Create an emoji of a child sitting on a chair with a smile, showing sit." },
+    { "keyword": "stand", "prompt": "Create an emoji of a child standing tall with a happy face, showing stand." },
+    { "keyword": "clean", "prompt": "Create an emoji of a sponge with a smile, showing clean or cleaning time." },
+    { "keyword": "wash", "prompt": "Create an emoji of hands with soap bubbles smiling, showing washing hands." },
+    { "keyword": "brush", "prompt": "Create an emoji of a toothbrush with smiling toothpaste, showing brush teeth." },
+    { "keyword": "done", "prompt": "Create an emoji of a happy face giving thumbs-up, showing done." }
+  ],
+
+  "batch_5": [
+    { "keyword": "feel", "prompt": "Create an emoji of a smiling heart, representing feelings and emotions." },
+    { "keyword": "feel happy", "prompt": "Create an emoji of a smiling child face showing joy, representing 'feel happy'." },
+    { "keyword": "feel sad", "prompt": "Create an emoji of a child’s face with a small tear, showing 'feel sad'." },
+    { "keyword": "feel angry", "prompt": "Create an emoji of a pouting child face, showing 'feel angry'." },
+    { "keyword": "feel scared", "prompt": "Create an emoji of a child hiding face slightly, showing 'feel scared'." },
+    { "keyword": "feel tired", "prompt": "Create an emoji of a yawning child with closed eyes, showing 'feel tired'." },
+    { "keyword": "feel proud", "prompt": "Create an emoji of a smiling child standing tall, showing 'feel proud'." },
+    { "keyword": "excited", "prompt": "Create an emoji of a jumping happy child with sparkles, showing excitement." },
+    { "keyword": "bored", "prompt": "Create an emoji of a child resting their cheek on their hand, showing boredom." },
+    { "keyword": "calm", "prompt": "Create an emoji of a peaceful face with closed eyes and a soft smile, showing calmness." }
+  ],
+
+  "batch_6": [
+    { "keyword": "doctor", "prompt": "Create an emoji of a friendly doctor with a stethoscope and a smile." },
+    { "keyword": "nurse", "prompt": "Create an emoji of a kind nurse with a red cross hat and gentle smile." },
+    { "keyword": "medicine", "prompt": "Create an emoji of a medicine bottle with a smiling face, showing health care." },
+    { "keyword": "hurt", "prompt": "Create an emoji of a bandage with a small smile, showing hurt or healing." },
+    { "keyword": "cold", "prompt": "Create an emoji of a shivering child wrapped in a blanket, showing cold." },
+    { "keyword": "hot", "prompt": "Create an emoji of a child wiping sweat under a sun, showing hot." },
+    { "keyword": "healthy", "prompt": "Create an emoji of a jumping child with a heart symbol, showing healthy." },
+    { "keyword": "mask", "prompt": "Create an emoji of a smiling face wearing a mask, showing safe and healthy behavior." },
+    { "keyword": "nap", "prompt": "Create an emoji of a sleeping face on a pillow, showing nap time." },
+    { "keyword": "hospital", "prompt": "Create an emoji of a building with a red cross and a happy face, showing hospital." }
+  ],
+
+  "batch_7": [
+    { "keyword": "teacher", "prompt": "Create an emoji of a smiling teacher holding a book and pointing kindly." },
+    { "keyword": "student", "prompt": "Create an emoji of a child sitting at a desk smiling, showing student." },
+    { "keyword": "bag", "prompt": "Create an emoji of a colorful school bag with a smile, showing backpack." },
+    { "keyword": "pencil", "prompt": "Create an emoji of a happy pencil drawing a line, showing writing." },
+    { "keyword": "book", "prompt": "Create an emoji of an open book with smiling eyes, showing reading." },
+    { "keyword": "desk", "prompt": "Create an emoji of a small desk with a happy face, showing classroom." },
+    { "keyword": "bell", "prompt": "Create an emoji of a ringing school bell with a smile, showing school time." },
+    { "keyword": "chair", "prompt": "Create an emoji of a simple chair with a smiling face, showing seat." },
+    { "keyword": "table", "prompt": "Create an emoji of a small table with a smile, showing workspace." },
+    { "keyword": "chalk", "prompt": "Create an emoji of chalk drawing on a board with a happy face, showing teaching." }
+  ],
+
+  "batch_8": [
+    { "keyword": "mom", "prompt": "Create an emoji of a kind smiling mother with soft features." },
+    { "keyword": "dad", "prompt": "Create an emoji of a happy father with a smile and gentle expression." },
+    { "keyword": "brother", "prompt": "Create an emoji of a happy little boy waving, showing brother." },
+    { "keyword": "sister", "prompt": "Create an emoji of a smiling little girl waving, showing sister." },
+    { "keyword": "grandma", "prompt": "Create an emoji of a sweet elderly woman with glasses and a smile." },
+    { "keyword": "grandpa", "prompt": "Create an emoji of a kind elderly man with a mustache and smile." },
+    { "keyword": "baby", "prompt": "Create an emoji of a cute baby face with a pacifier, showing baby." },
+    { "keyword": "friend", "prompt": "Create an emoji of two smiling children hugging, showing friendship." },
+    { "keyword": "family", "prompt": "Create an emoji of smiling family members together, showing family." },
+    { "keyword": "love", "prompt": "Create an emoji of a red heart with a smiling face, showing love." }
+  ],
+
+  "batch_9": [
+    { "keyword": "tree", "prompt": "Create an emoji of a happy green tree with eyes and a smile." },
+    { "keyword": "flower", "prompt": "Create an emoji of a bright flower with a happy face, showing nature." },
+    { "keyword": "bird", "prompt": "Create an emoji of a colorful bird with cheerful wings, showing flying." },
+    { "keyword": "fish", "prompt": "Create an emoji of a happy fish with bubbles, showing swimming." },
+    { "keyword": "dog", "prompt": "Create an emoji of a playful dog with wagging tail and smiling face." },
+    { "keyword": "cat", "prompt": "Create an emoji of a cute cat face with a smile, showing pet cat." },
+    { "keyword": "cow", "prompt": "Create an emoji of a gentle cow with a friendly face, showing farm animal." },
+    { "keyword": "bee", "prompt": "Create an emoji of a cute bee with a smiling face, showing buzzing happily." },
+    { "keyword": "butterfly", "prompt": "Create an emoji of a colorful butterfly with a happy face, showing flying." },
+    { "keyword": "sun", "prompt": "Create an emoji of a bright sun with a smiling face, showing sunny day." }
+  ],
+
+  "batch_10": [
+    { "keyword": "hello", "prompt": "Create an emoji of a waving hand with a happy face, showing hello." },
+    { "keyword": "bye", "prompt": "Create an emoji of a waving hand with a cheerful smile, showing goodbye." },
+    { "keyword": "thank you", "prompt": "Create an emoji of two hands together with a smiling face, showing thank you." },
+    { "keyword": "good job", "prompt": "Create an emoji of a happy star with thumbs-up, showing good job." },
+    { "keyword": "great", "prompt": "Create an emoji of a shining happy star, showing great or awesome." },
+    { "keyword": "sorry", "prompt": "Create an emoji of a small child with folded hands and a gentle smile, showing sorry." },
+    { "keyword": "hug", "prompt": "Create an emoji of two smiling faces hugging warmly, showing hug." },
+    { "keyword": "share", "prompt": "Create an emoji of two hands passing a toy happily, showing sharing." },
+    { "keyword": "smile", "prompt": "Create an emoji of a big smiling face, showing happiness and friendliness." },
+    { "keyword": "love you", "prompt": "Create an emoji of a red heart hugging another heart, showing love you." }
+  ]
+}
